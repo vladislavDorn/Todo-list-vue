@@ -1,45 +1,16 @@
 <template>
   <div id="app">
     <div class="container">
-      <TodoList :todos="todos"/>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </div>
   </div>
 </template>
 
 <script>
-import TodoList from "./components/TodoList.vue";
-
 export default {
   name: "App",
-   data() {
-    return {
-      todos: [
-        {
-          id: 1,
-          title: "First todo",
-          tasksList: [
-            {
-              id: 1,
-              title: "task name"
-            }
-          ]
-        },
-        {
-          id: 2,
-          title: "Second todo",
-          tasksList: [
-            {
-              id: 1,
-              title: "task name"
-            }
-          ]
-        }
-      ]
-    };
-  },
-  components: {
-    TodoList
-  }
 };
 </script>
 

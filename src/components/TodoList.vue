@@ -1,37 +1,52 @@
 <template>
   <div class="todo__wrapper">
-    <h2 class="todo__counter">{{ "Количество заметок: " + todos.length }}</h2>
+    <h2 class="todo__counter">{{ "Количество заметок: " + getTodos.length }}</h2>
     <div class="todo__list">
       <Todo
-        v-for="todo in todos"
+        v-for="todo in getTodos"
         :key="todo.id"
         :id="todo.id"
         :title="todo.title"
         :tasksList="todo.tasksList"
+        :delTodo="delTodo"
+        :getModalState="getModalState"
+        :toggleModal="toggleModal"
       />
     </div>
+    <TodoCreator :newTodoHandler="newTodoHandler" :addTodo="addTodo" :getTodoValue="getTodoValue" />
+    <TodoModal
+      v-if="getModalState.isActive"
+      :toggleModal="toggleModal"
+      :delTodo="delTodo"
+      :id="getModalState.id"
+      :title="getTodos.find(el => el.id === getModalState.id).title"
+    />
   </div>
-</template>
+</template> 
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 import Todo from "./Todo.vue";
+import TodoModal from "./TodoModal";
+import TodoCreator from "./TodoCreator";
 
 export default {
   name: "TodoList",
-  props: {
-      todos: Array
-  },
+  computed: mapGetters(["getTodos", "getTodoValue", "getModalState"]),
+  methods: mapActions(["addTodo", "newTodoHandler", "delTodo", "toggleModal"]),
   components: {
-    Todo
+    Todo,
+    TodoModal,
+    TodoCreator
   }
 };
 </script>
 
 <style scoped>
 .todo__counter {
-    margin: 20px 0;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #e5e5e5;
+  margin: 20px 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #e5e5e5;
 }
 .todo__list {
   display: grid;
@@ -39,5 +54,6 @@ export default {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-auto-rows: 250px;
   margin: 15px 0;
+  width: 100%;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="todo__item">
     <h1>{{ title }}</h1>
-    <div class="todo__del">✖</div>
+    <div class="todo__del" v-on:click="toggleModal(id)">✖</div>
   </div>
 </template>
 
@@ -11,7 +11,8 @@ export default {
   props: {
     id: Number,
     title: String,
-    tasksList: Array
+    tasksList: Array,
+    toggleModal: Function
   }
 };
 </script>
