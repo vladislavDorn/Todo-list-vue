@@ -47,4 +47,7 @@ export default {
   cancelСhanges(context) {
     context.commit("cancelСhanges");
   },
+  getLocalStorageState(context, data) {
+    context.commit("getLocalStorageState", data)
+  }
 };

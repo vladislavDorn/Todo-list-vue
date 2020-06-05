@@ -91,4 +91,7 @@ export default {
       modal: false,
     };
   },
+  getLocalStorageState(state, data) {
+    state = data
+  }
 };
