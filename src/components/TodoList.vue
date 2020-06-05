@@ -40,11 +40,23 @@ import TodoCreator from "./TodoCreator";
 export default {
   name: "TodoList",
   computed: mapGetters(["getTodos", "getTodoValue", "getModalState"]),
-  methods: mapActions(["addTodo", "newTodoHandler", "delTodo", "toggleModal"]),
+  methods: mapActions([
+    "addTodo",
+    "newTodoHandler",
+    "delTodo",
+    "toggleModal",
+    "getLocalStorageState"
+  ]),
   components: {
     Todo,
     TodoModal,
     TodoCreator
+  },
+  mounted() {
+    const storageData = localStorage.getItem("vuex");
+    if (storageData) {
+      this.getLocalStorageState(JSON.parse(storageData).TodosModule);
+    }
   }
 };
 </script>
