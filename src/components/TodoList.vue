@@ -3,8 +3,8 @@
     <h2 class="todo__counter">{{ "Количество заметок: " + getTodos.length }}</h2>
     <div class="todo__list">
       <Todo
-        v-for="todo in getTodos"
-        :key="todo.id"
+        v-for="(todo, index) in getTodos"
+        :key="index"
         :id="todo.id"
         :title="todo.title"
         :tasksList="todo.tasksList"
@@ -13,13 +13,20 @@
         :toggleModal="toggleModal"
       />
     </div>
-    <TodoCreator :newTodoHandler="newTodoHandler" :addTodo="addTodo" :getTodoValue="getTodoValue" />
+    <TodoCreator
+      placeholder="Название заметки"
+      :inputHandler="newTodoHandler"
+      :addFunction="addTodo"
+      :inputValue="getTodoValue"
+    />
     <TodoModal
       v-if="getModalState.isActive"
       :toggleModal="toggleModal"
-      :delTodo="delTodo"
+      :declineFunction="delTodo"
       :id="getModalState.id"
-      :title="getTodos.find(el => el.id === getModalState.id).title"
+      :itemName="getTodos.find(el => el.id === getModalState.id).title"
+      modaltitle="Подтвердите действие"
+      modalDescription="Вы действительно хотите удалить заметку"
     />
   </div>
 </template> 
