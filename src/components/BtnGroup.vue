@@ -49,4 +49,14 @@ export default {
     background: DodgerBlue;
   }
 }
+@media(max-width: 402px) {
+  .current-todo{
+    &__task-list_group-btn {
+      flex-wrap: wrap;
+      button:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
 </style>

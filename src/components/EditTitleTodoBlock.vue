@@ -52,7 +52,7 @@ export default {
       font-size: 24px;
       border: none;
       padding: 0;
-      width: calc(100% - 100px);
+      width: calc(100% - 55px);
     }
   }
   &__title_wrapper::before {

@@ -112,6 +112,7 @@ export default {
     height: 25px;
     width: 25px;
     background-color: #eee;
+    border-radius: 3px;
   }
   &__task-list_item_label:hover
     &__task-list_item_checkbox
@@ -121,7 +122,7 @@ export default {
   &__task-list_item_label
     &__task-list_item_checkbox:checked
     ~ &__task-list_item_checkmark {
-    background-color: #2196f3;
+    background-color: LightSeaGreen;
   }
   &__task-list_item_checkmark:after {
     content: "";
