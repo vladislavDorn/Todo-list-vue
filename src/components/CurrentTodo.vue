@@ -90,19 +90,23 @@ export default {
       "delTodo",
       "cancelСhanges"
     ]),
+    // Cancel popup when edit title todo
     cancelModalCurrentTodo() {
       this.toggleModalCurrentTodo();
       this.toggleEditingCurrentTodo();
     },
+    // Redirect to main page and delete todo
     deleteTodoRedirect() {
       this.$router.push("/");
       this.delTodo(this.getCurrentTodo.id);
     },
+    // Redirect to main page and save todo
     saveCurrentTodoRedirect() {
       this.$router.push("/");
       this.saveCurrentTodo(this.getCurrentTodo.id);
     }
   },
+  // Passing id from $route object
   mounted() {
     const todoId = this.$route.params.id;
     this.setCurrentTodo(todoId);

@@ -1,6 +1,7 @@
 import mutations from "../mutations/mutations";
 import actions from "../actions/actions";
 import getters from "../getters/getters";
+// Library that generates a unique id
 import { uuid } from "vue-uuid";
 
 export default {

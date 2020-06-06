@@ -9,5 +9,6 @@ export default new Vuex.Store({
   modules: {
     TodosModule,
   },
+  // Connect vue-persistedState
   plugins: [createPersistedState()],
 });

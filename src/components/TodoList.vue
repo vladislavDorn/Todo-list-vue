@@ -52,6 +52,7 @@ export default {
     TodoModal,
     TodoCreator
   },
+  // Check localstorage for state synchronization
   mounted() {
     const storageData = localStorage.getItem("vuex");
     if (storageData) {
