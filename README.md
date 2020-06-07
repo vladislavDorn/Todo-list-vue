@@ -1,5 +1,7 @@
 # todo-vue
 
+## [Go to the web site](https://vladislavdorn.github.io/Todo-list-vue/#/)
+
 ## Project setup
 ```
 npm install

@@ -5,6 +5,7 @@
       placeholder="Введите новое название для задачи"
       v-if="editing"
       type="text"
+      :value="title"
       @input="e => handleEditingTask({ id, value: e.target.value })"
     />
     <div v-else class="current-todo__task-list_item_active">
@@ -21,6 +22,14 @@
     </div>
     <div class="current-todo__task-list_item_control-panel">
       <button
+        v-if="editing"
+        :disabled="!title"
+        type="button"
+        class="current-todo__task-list_item_save-btn"
+        @click="toggleEditingTask(id)"
+      />
+      <button
+        v-else
         class="current-todo__task-list_item_edit"
         type="button"
         @click="toggleEditingTask(id)"
@@ -61,7 +70,8 @@ export default {
     width: 60px;
   }
   &__task-list_item_edit,
-  &__task-list_item_del {
+  &__task-list_item_del,
+  &__task-list_item_save-btn {
     width: 20px;
     height: 20px;
     border: none;
@@ -72,9 +82,13 @@ export default {
     opacity: 0.6;
   }
   &__task-list_item_edit:hover,
-  &__task-list_item_del:hover {
+  &__task-list_item_del:hover,
+  &__task-list_item_save-btn:hover {
     transform: scale(1.1);
     opacity: 1;
+  }
+  &__task-list_item_save-btn {
+    background: url(../assets/tick.png) center center / cover no-repeat;
   }
   &__task-list_item_edit {
     background: url(../assets/edit.png) center center / cover no-repeat;
@@ -146,7 +160,7 @@ export default {
     transform: rotate(45deg);
   }
   &__task-list_edit_input {
-    background: transparent;
+    background: rgba(0, 255, 255, 0.1);
     border: none;
     padding: 0;
     font-size: 22px;
